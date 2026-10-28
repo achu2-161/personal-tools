@@ -79,6 +79,7 @@ Every device-only app needs it, and synced apps benefit from it.
 - Every record needs a **stable ID** so a re-import overwrites instead of duplicating. Use a content hash (SHA-256) for blobs like photos.
 - Run duplicate clean-up on every import, as a safety net for old backups.
 - On iOS, use the share sheet for export.
+- Device-only apps should call `navigator.storage.persist()` so the browser is less likely to evict data, and can nudge the user when the last backup is old.
 - Warn when a restore will write to shared data. For example, restoring Adripedia pushes every entry to Firestore and onto Yixiao's phone.
 
 ## Offline and service workers
