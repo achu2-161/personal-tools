@@ -39,6 +39,7 @@ Bugs and mistakes that actually happened, grouped by topic. Each one says what w
 - **Base64 icons in the manifest passed the local install check but broke WebAPK minting.** Rule: real hosted icon files; check `chrome://webapks`. *(Field Trip)*
 - **Pages on a private repo fails silently on a free account.** Now on Pro, so private works, but the site stays public. *(Brownie Points, Anila's Doors)*
 - **First Pages deploy didn't trigger.** Rule: toggle Source to None and back. *(Brownie Points)*
+- **Two installable apps on one site need separate folders.** A second page sharing the first app's scope was treated as "already installed" and could only be added as a shortcut. Rule: give each installable role its own folder and manifest scope (e.g. `office/`). *(Karimov & Co.)*
 - **iOS ignores the manifest.** Rule: ship `apple-touch-icon.png` and the iOS meta tags from the start. *(Brownie Points)*
 - **Claude's GitHub app can't see newly created repos** until they're added in its settings, and it can't create repos or switch on Pages. *(Anila's Doors)*
 
