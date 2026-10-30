@@ -50,4 +50,4 @@ Aged-paper sheet with a double rule border, Adrian's own brand assets (armillary
 
 ## Open questions
 
-- None right now.
+- Adrian's own S22 can't install either app (Chrome reports "already installed" with no WebAPK). Installs fine on other phones. Using a shortcut for now; a new origin (e.g. Firebase Hosting) would sidestep it.

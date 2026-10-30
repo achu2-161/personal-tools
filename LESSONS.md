@@ -40,6 +40,7 @@ Bugs and mistakes that actually happened, grouped by topic. Each one says what w
 - **Pages on a private repo fails silently on a free account.** Now on Pro, so private works, but the site stays public. *(Brownie Points, Anila's Doors)*
 - **First Pages deploy didn't trigger.** Rule: toggle Source to None and back. *(Brownie Points)*
 - **Two installable apps on one site need separate folders.** A second page sharing the first app's scope was treated as "already installed" and could only be added as a shortcut. Rule: give each installable role its own folder and manifest scope (e.g. `office/`). *(Karimov & Co.)*
+- **A failed first install can leave Chrome stuck on one phone.** Adrian's S22 said "This app is already installed" for every page under `/karimov-co/`, yet no WebAPK existed and "open app" failed. New manifest ids, a restart and force-stop didn't help; the same site installed fine on another phone and passed Chromium's installability check with no errors. Rule: test on a second device before changing code; workarounds are a shortcut, another browser, or a new origin. Don't clear site data for the shared `github.io` origin. *(Karimov & Co.)*
 - **iOS ignores the manifest.** Rule: ship `apple-touch-icon.png` and the iOS meta tags from the start. *(Brownie Points)*
 - **Claude's GitHub app can't see newly created repos** until they're added in its settings, and it can't create repos or switch on Pages. *(Anila's Doors)*
 
