@@ -25,14 +25,14 @@
 
 ## Data model
 
-- `requests/{id}`: `title`, `author`, `notes`, `requestedBy`, `status` (`new` · `query` · `sourcing` · `delivered` · `declined`), `createdAt`, `updatedAt`, `invoiceId`, `messages[]` (`{id, from: 'client'|'karimov', name, kind: 'query'|'note', text, at}`).
-- `invoices/{id}`: `number`, `date`, `billTo`, `billNote`, `item`, `qty`, `total`, `rate`, `unit`, `unitPlural`, `notes`, `requestIds[]`, `deductions[]` (`{id, amount, date, method, note}`), `createdAt`.
-- Derived, not stored: amount paid and remaining, totals owed per currency, "needs attention" (status `new`, or client wrote last on an open request).
+- `requests/{id}`: `title` (book or collection), `author`, `notes`, `requestedBy`, `books` (1 or more for a series), `deliveredBooks`, `status` (`new` · `query` · `sourcing` · `waiting` · `delivered` · `declined`), `createdAt`, `updatedAt`, `messages[]` (`{id, from: 'client'|'karimov', name, kind: 'query'|'note', text, at}`).
+- `invoices/{id}`: `number` (random `NNNN/UZB/MM-YY`), `date`, `billTo`, `billNote`, `item`, `qty`, `price` (per book), `total`, `unit` + `unitPlural`, `rate` (display text), `notes`, `lines[]` (`{requestId, books}`), `deductions[]` (`{id, amount, date, method, note}`), `createdAt`. Older invoices may have `requestIds[]` instead of `lines`; `linesOf()` reads both.
+- Derived, not stored: books billed per request (sum of invoice lines), books still billable (delivered − billed), amount paid and remaining, totals owed per currency, "needs attention".
 
 ## How it works
 
 - Messages append with `FieldValue.arrayUnion` together with any status change, in one write. Asking for clarification sets `query`; a client's answer sets it back to `new`.
-- Saving an invoice links and unlinks its requests' `invoiceId` in one batch.
+- Invoices own the link to requests through `lines`; requests are never written when invoicing, so a series can be billed across several invoices.
 - Renders are guarded by a data signature, and unsent reply text is kept across live updates.
 - No native dialogs: two-tap confirm for deletes.
 
@@ -43,7 +43,6 @@ Aged-paper sheet with a double rule border, Adrian's own brand assets (armillary
 ## Decisions
 
 - **Lore**: Adrian Chu is Ulug'bek Karimov's agent, so "payable to Adrian Chu" on invoices is in character.
-
 - **Moved out of Claude artifacts** so clients don't need claude.ai accounts.
 - **One shared client link** (Adrian's choice): every client sees every request and invoice. Names are typed per request and remembered per device.
 - **Trust-based**: `master.html` has no password; rules are open on the two collections.
