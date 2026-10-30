@@ -9,7 +9,7 @@ Last reviewed: 2026-10-29. All sites are under `https://achu2-161.github.io/`.
 | [Adripedia](apps/adripedia.md) | Two shared word encyclopedias, study and quiz mode, CSV importer | `adripedia` | Firestore | Deployed, stable |
 | [RSA Quiz](apps/rsa-quiz.md) | Game-show quiz: projected board, phone buzzers, MC screen | _not recorded_ | Firebase Realtime Database (or local test mode) | Built and refined. Deployment not confirmed |
 | [Anila's Doors](apps/anila-doors.md) | PhD milestone advent calendar with a secret surprise jar | `anila-doors` (private) | Device only (localStorage) | Deployed from a private repo |
-| [Karimov & Co.](apps/karimov-co.md) | Book requests from friends' kids to a fictional Uzbek "contact", clarifications, and panna cotta invoices | `karimov-co` | Firestore (or local test mode) | Built and sandbox-tested. Firebase and Pages not set up yet |
+| [Karimov & Co.](apps/karimov-co.md) | Book requests from friends' kids to a fictional Uzbek "contact", clarifications, and panna cotta invoices | `karimov-co` | Firestore | Live (Pages + Firestore), beta testing |
 
 ## Patterns at a glance
 
@@ -28,4 +28,3 @@ Last reviewed: 2026-10-29. All sites are under `https://achu2-161.github.io/`.
 - **Field Trip Tracker**: Firebase sync and multi-trip support were discussed, not built.
 - **Adripedia**: tags, spaced repetition and a config object for encyclopedia names were discussed, not built.
 - **RSA Quiz**: confirm the repo name and whether it has been deployed.
-- **Karimov & Co.**: create the Firebase project, paste the config, switch on Pages, restore the starting invoices.

@@ -7,9 +7,9 @@
 | Site | `https://achu2-161.github.io/karimov-co/` (client) · `…/master.html` (back office) |
 | Repo | `achu2-161/karimov-co` |
 | Data tier | Firestore, or local test mode when `firebase-config.js` is `null` |
-| Firebase project | to be created (suggested `karimov-co`, `australia-southeast2`) |
+| Firebase project | `karimov-co`, Firestore in `australia-southeast2` (Spark plan) |
 | Users and devices | Clients on their own devices via one shared link; Adrian on the back office |
-| Status | Built and sandbox-tested (Oct 2026). Firebase setup and Pages not yet switched on |
+| Status | Live on GitHub Pages with Firestore (30 Oct 2026). Beta testing |
 
 ## Files
 
@@ -42,11 +42,12 @@ Aged-paper sheet with a double rule border, Adrian's own brand assets (armillary
 
 ## Decisions
 
+- **Lore**: Adrian Chu is Ulug'bek Karimov's agent, so "payable to Adrian Chu" on invoices is in character.
+
 - **Moved out of Claude artifacts** so clients don't need claude.ai accounts.
 - **One shared client link** (Adrian's choice): every client sees every request and invoice. Names are typed per request and remembered per device.
 - **Trust-based**: `master.html` has no password; rules are open on the two collections.
 
 ## Open questions
 
-- Firebase project and Pages not set up yet.
-- Existing invoice 7762's notes mention "Adrian Chu", which breaks the fiction on the client page.
+- None right now.
