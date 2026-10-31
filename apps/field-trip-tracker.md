@@ -53,5 +53,5 @@ Dark jade (`#0E3E34` cards on `#05201B`) with a muted gold accent (named `--oran
 
 ## Discussed, not built
 
-- **Firebase sync** (Firestore + Storage + Google sign-in). Recommended in Claude Code. Open decision: local cache with sync, or cloud-only. Leaning towards keeping a local cache.
+- **Firebase sync** (Firestore + Storage + Google sign-in), discussed again 1 Nov 2026 after the data loss. Recommendation: Blaze plan, Google sign-in restricted to Adrian, Firestore for text, Cloud Storage for photos named by SHA-256, IndexedDB kept as an offline cache, export/import kept as a safety net, built in Claude Code. Alternatives: Spark with compressed photos in Firestore, a backup-only copy, or saving exports to Drive by hand. Current data (~65 MB backup) is far below every free allowance; see [FIREBASE.md](../FIREBASE.md#plans-limits-and-scaling-up). Open questions: card on file for Blaze, offline behaviour, bucket region, mainland China access. Full notes: project note `claude/handover-firebase-storage-blaze.md`.
 - **Multi-trip support**, browsing several trips at once. Every storage key would need a trip-ID scope. Adrian wants the full version eventually.

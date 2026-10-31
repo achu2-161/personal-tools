@@ -14,6 +14,33 @@ Used when people or devices need to share live data. Two products are in use. Pi
 
 Both run on the free Spark plan. Neither needs Cloud Functions for what these apps do.
 
+## Plans, limits and scaling up
+
+Checked on Firebase's pricing page, 1 Nov 2026. Re-check before relying on figures.
+
+| | Spark (free, no card) | Blaze (pay as you go, card on file) |
+|---|---|---|
+| Firestore | 1 GiB stored, 10 GiB egress/month, 50K reads/day, 20K writes/day | Same free allowance, then billed |
+| Realtime Database | Free tier | Same free tier, then billed |
+| **Cloud Storage** (files, photos) | **Not available** since 3 Feb 2026 | 5 GB stored, 100 GB downloads/month, 5K uploads and 50K downloads/month free (current `*.firebasestorage.app` buckets) |
+| Authentication | Free to 50K monthly users; Google sign-in free | Same; SMS sign-in billed per message |
+
+- **Blaze is per project.** One app can move to Blaze while the others stay on Spark. Keep apps with open rules (Brownie Points, RSA Quiz) on their own Spark projects.
+- **Blaze has no hard spending cap.** Budget alerts only send email. Lock rules down before switching.
+- Beyond the free allowance, rough rates are about US$0.02/GB/month stored and US$0.12/GB downloaded (from a third-party 2026 guide, US regions).
+- Not verified: whether the free Storage allowance applies to Australian bucket regions. At these apps' sizes it costs a fraction of a cent either way.
+- Google services, Firebase included, are generally blocked in mainland China without a VPN.
+
+**Where the apps sit (1 Nov 2026):** nowhere near any limit. The largest data set is the Field Trip Tracker's ~65 MB backup (~49 MB of actual photos), which is still on the phone, not in Firebase. Under US$10/month on Blaze would cover tens of thousands of photos and a few dozen viewers.
+
+**What would push costs up:** video, many viewers of photo-heavy galleries, listeners that re-read whole collections, open write rules on Blaze, SMS sign-in.
+
+**Photo options, by plan:**
+- **Spark:** compressed base64 inside Firestore documents (see [Writing safely](#writing-safely)). Free, but costs photo quality.
+- **Blaze:** Cloud Storage, files named by their SHA-256 hash so re-uploads can't create duplicates, with the metadata in Firestore.
+
+Worked example: the Field Trip Tracker sync discussion, in the "Personal Tools" project note `claude/handover-firebase-storage-blaze.md`.
+
 ## Loading the SDK
 
 Use the **`-compat`** builds via plain `<script>` tags:
@@ -101,7 +128,7 @@ Put the secret in a document of its own (or a subcollection) gated like this. Fi
 - **Lists**: `push()`, which can't overwrite when two devices write at once.
 - **One action = one write.** A counter bump and its log entry go together.
 - **Document IDs from content** (`term + '_' + owner`) make renames tricky. Capture the old ID before mutating, write the new document, and delete the old one only after the write succeeds.
-- **Images in Firestore**: base64 in the document works and needs no Storage bucket, but compress first (1000 px longest edge, JPEG 0.72 → typically 60–150 KB). Base64 adds ~33%, so anything over ~780 KB raw fails.
+- **Images in Firestore**: base64 in the document works and needs no Storage bucket (so it stays on Spark), but compress first (1000 px longest edge, JPEG 0.72 → typically 60–150 KB). Base64 adds ~33%, so anything over ~780 KB raw fails.
 - **Catch blocks must tell the user.** A write that fails while the UI looks saved is silent data loss.
 
 ## Verifying
