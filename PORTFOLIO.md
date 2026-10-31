@@ -8,7 +8,7 @@ Last reviewed: 2026-10-29. All sites are under `https://achu2-161.github.io/`.
 | [Brownie Points](apps/brownie-points.md) | Shared points and credits between Adrian and Yixiao | `brownie-points` | Firebase Realtime Database | Deployed. Core mechanic under reconsideration |
 | [Adripedia](apps/adripedia.md) | Two shared word encyclopedias, study and quiz mode, CSV importer | `adripedia` | Firestore | Deployed, stable |
 | [RSA Quiz](apps/rsa-quiz.md) | Game-show quiz: projected board, phone buzzers, MC screen | _not recorded_ | Firebase Realtime Database (or local test mode) | Built and refined. Deployment not confirmed |
-| [Anila's Doors](apps/anila-doors.md) | PhD milestone advent calendar with a secret surprise jar | `anila-doors` (private) | Device only (localStorage) | Deployed from a private repo |
+| [Anila's Doors](apps/anila-doors.md) | PhD milestone advent calendar with a secret surprise jar, plus daily goals with a small-treats jar | `anila-doors` (private) | Device only (localStorage) | Deployed from a private repo. Daily goals added 31 Oct |
 | [Karimov & Co.](apps/karimov-co.md) | Book requests from friends' kids to a fictional Uzbek "contact", clarifications, and panna cotta invoices | `karimov-co` | Firestore | Live (Pages + Firestore), beta testing |
 
 ## Patterns at a glance
