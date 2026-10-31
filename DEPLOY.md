@@ -26,9 +26,9 @@ Claude can push to existing repos but can't create repos or switch on Pages.
 2. Click **uploading an existing file** and drag in all the unzipped files, including any folders like `icons/`.
 3. Switch on Pages as in step 4 above.
 
-## Second host: Netlify (when one phone won't install)
+## Second host: Netlify
 
-Used for Karimov & Co. A Netlify project can serve the same repo at a new origin (`<name>.netlify.app`) and auto-deploys every push to `main`. Settings: no build command, publish directory `.`. Then set **Project configuration → Visitor access → Public** (new projects from private repos can default to private). Sign up with Google or a plain email if GitHub sign-up fails on a "+" address. Free-plan projects created since Aug 2026 get a "Powered by Netlify" badge; if the settings toggle isn't offered, a `_headers` file with a `script-src` CSP that omits `'unsafe-inline'` keeps it off (no inline scripts in the app, list every script host).
+Used for Karimov & Co. as a **workaround** when Adrian's phone wouldn't install a new app from `github.io`. The real cause was a Chrome 156 bug (see [LESSONS.md](LESSONS.md#deploy-and-install)), and a second app on the Netlify address then hit the same bug, so a new host only helps for the first app on it. Chrome Beta is the simpler workaround. A Netlify project can serve the same repo at a new origin (`<name>.netlify.app`) and auto-deploys every push to `main`. Settings: no build command, publish directory `.`. Then set **Project configuration → Visitor access → Public** (new projects from private repos can default to private). Sign up with Google or a plain email if GitHub sign-up fails on a "+" address. Free-plan projects created since Aug 2026 get a "Powered by Netlify" badge; if the settings toggle isn't offered, a `_headers` file with a `script-src` CSP that omits `'unsafe-inline'` keeps it off (no inline scripts in the app, list every script host).
 
 ## Pages quirks
 
