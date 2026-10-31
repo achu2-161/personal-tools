@@ -54,6 +54,7 @@ Aged-paper sheet with a double rule border, Adrian's own brand assets (armillary
 - Adrian's S22 Chrome kept a broken install record for everything under `achu2-161.github.io/karimov-co/` ("already installed", no WebAPK, "Could not open app"). Other phones installed fine. Fixed by serving the same repo from a second origin, `karimov-co.netlify.app`, and installing the back office from there.
 - Netlify sign-up with GitHub failed ("Email address is invalid") while GitHub's primary email was a Gmail "+" address; switching the primary email to the unimelb address worked.
 - New Netlify projects from a private repo defaulted to **Private** visibility (team login required). Set Project configuration → Visitor access → Customize → Public.
+- The free-plan "Powered by Netlify" badge couldn't be switched off in settings. It's an injected inline script, so `_headers` sets `Content-Security-Policy: script-src 'self' https://www.gstatic.com`. Keep the pages free of inline `<script>` blocks (the service worker is registered from `shared.js`; `master.html` uses `redirect.js`). Add any new script host to that header.
 
 ## Open questions
 

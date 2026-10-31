@@ -28,7 +28,7 @@ Claude can push to existing repos but can't create repos or switch on Pages.
 
 ## Second host: Netlify (when one phone won't install)
 
-Used for Karimov & Co. A Netlify project can serve the same repo at a new origin (`<name>.netlify.app`) and auto-deploys every push to `main`. Settings: no build command, publish directory `.`. Then set **Project configuration → Visitor access → Public** (new projects from private repos can default to private). Sign up with Google or a plain email if GitHub sign-up fails on a "+" address.
+Used for Karimov & Co. A Netlify project can serve the same repo at a new origin (`<name>.netlify.app`) and auto-deploys every push to `main`. Settings: no build command, publish directory `.`. Then set **Project configuration → Visitor access → Public** (new projects from private repos can default to private). Sign up with Google or a plain email if GitHub sign-up fails on a "+" address. Free-plan projects created since Aug 2026 get a "Powered by Netlify" badge; if the settings toggle isn't offered, a `_headers` file with a `script-src` CSP that omits `'unsafe-inline'` keeps it off (no inline scripts in the app, list every script host).
 
 ## Pages quirks
 
