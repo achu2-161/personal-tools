@@ -4,8 +4,9 @@
 
 | | |
 |---|---|
-| Site | `https://achu2-161.github.io/karimov-co/` (client) · `…/office/` (back office; `master.html` forwards there) |
-| Repo | `achu2-161/karimov-co` |
+| Site | Client: `https://achu2-161.github.io/karimov-co/` · Back office: `https://karimov-co.netlify.app/office/` (Adrian's install) — both hosts serve the same repo; `master.html` forwards to `office/` |
+| Repo | `achu2-161/karimov-co` (private) |
+| Hosting | GitHub Pages and Netlify (project `karimov-co`, auto-deploys `main`, publish dir `.`, visibility set to Public) |
 | Data tier | Firestore, or local test mode when `firebase-config.js` is `null` |
 | Firebase project | `karimov-co`, Firestore in `australia-southeast2` (Spark plan) |
 | Users and devices | Clients on their own devices via one shared link; Adrian on the back office |
@@ -48,6 +49,12 @@ Aged-paper sheet with a double rule border, Adrian's own brand assets (armillary
 - **Back office in `office/`**: with both pages at the root sharing scope `./`, Chrome said "already installed" on `master.html` and offered only a shortcut.
 - **Trust-based**: the back office has no password; rules are open on the two collections.
 
+## App-specific lessons
+
+- Adrian's S22 Chrome kept a broken install record for everything under `achu2-161.github.io/karimov-co/` ("already installed", no WebAPK, "Could not open app"). Other phones installed fine. Fixed by serving the same repo from a second origin, `karimov-co.netlify.app`, and installing the back office from there.
+- Netlify sign-up with GitHub failed ("Email address is invalid") while GitHub's primary email was a Gmail "+" address; switching the primary email to the unimelb address worked.
+- New Netlify projects from a private repo defaulted to **Private** visibility (team login required). Set Project configuration → Visitor access → Customize → Public.
+
 ## Open questions
 
-- Adrian's own S22 can't install either app (Chrome reports "already installed" with no WebAPK). Installs fine on other phones. Using a shortcut for now; a new origin (e.g. Firebase Hosting) would sidestep it.
+- None right now.

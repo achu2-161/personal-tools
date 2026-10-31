@@ -26,6 +26,10 @@ Claude can push to existing repos but can't create repos or switch on Pages.
 2. Click **uploading an existing file** and drag in all the unzipped files, including any folders like `icons/`.
 3. Switch on Pages as in step 4 above.
 
+## Second host: Netlify (when one phone won't install)
+
+Used for Karimov & Co. A Netlify project can serve the same repo at a new origin (`<name>.netlify.app`) and auto-deploys every push to `main`. Settings: no build command, publish directory `.`. Then set **Project configuration → Visitor access → Public** (new projects from private repos can default to private). Sign up with Google or a plain email if GitHub sign-up fails on a "+" address.
+
 ## Pages quirks
 
 - The first deployment sometimes doesn't trigger. Set Source to **None**, save, then back to **Deploy from a branch**.
